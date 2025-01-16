@@ -1,4 +1,4 @@
-﻿@model List<MyMongoProjectNight.Dtos.CustomerDtos.ResultCustomerDto>
+﻿@model List<MyMongoProjectNight.Dtos.CustomerDtos.ResultCustomerWithCategoryDto>
 @{
     ViewData["Title"] = "CustomerList";
 }
@@ -16,6 +16,7 @@
     }
 
         .custom-btn:hover {
+            color:white;
             transform: scale(1.1);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
@@ -26,24 +27,20 @@
         }
 </style>
 <div class="container mt-2">
-    <table class="table-bordered table-hover">
+    <table class="table table-bordered table-hover">
         <tr>
             <th>#</th>
-            <th>Müşteri Adı</th>
-            <th>Müşteri Soyadı</th>
-            <th>Müşteri Sil</th>
-            <th>Müşteri Güncelle</th>
+            <th>Müşteri Adı Soyadı</th>
+            <th>Müşteri Departman</th>
         </tr>
         @foreach(var item in Model){
             <tr>
                 <td>@item.CustomerId</td>
-                <td>@item.CustomerName</td>
-                <td>@item.CustomerSurname</td>
-                <td><a class="btn btn-danger" href="~/Customer/CustomerDelete/@item.CustomerId">Müşteri Sil</a></td>
-                <td><a class="btn btn-info" href="~/Customer/UpdateCustomer/@item.CustomerId">Müşteri Güncelle</a></td>
+                <td>@item.CustomerName @item.CustomerSurname</td>
+                <td>@item.DepartmentName</td>
             </tr>
         }
     </table>
-    <button class="btn custom-btn">Müşteri Ekle</button>
+    <a href="/Customer/CreateCustomer" class="btn custom-btn">Müşteri Ekle</a>
 </div>
 
