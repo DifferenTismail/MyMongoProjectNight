@@ -26,7 +26,7 @@ namespace MyMongoProjectNight.Controllers
         [HttpGet]
         public async Task<IActionResult> CustomerList()
         {
-            var values = await _customerService.GetAllCustomerAsync();
+            var values = await _customerService.GetAllCustomerWithCategoryAsync();
             return View(values);
         }
         public async Task<IActionResult> CustomerDelete(string id)
