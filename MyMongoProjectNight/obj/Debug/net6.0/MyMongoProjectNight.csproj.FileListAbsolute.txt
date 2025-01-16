@@ -231,3 +231,4 @@ C:\Users\ismai\OneDrive\Masaüstü\my\MyMongoProjectNight\MyMongoProjectNight\ob
 C:\Users\ismai\OneDrive\Masaüstü\my\MyMongoProjectNight\MyMongoProjectNight\obj\Debug\net6.0\MyMongoProjectNight.pdb
 C:\Users\ismai\OneDrive\Masaüstü\my\MyMongoProjectNight\MyMongoProjectNight\obj\Debug\net6.0\MyMongoProjectNight.genruntimeconfig.cache
 C:\Users\ismai\OneDrive\Masaüstü\my\MyMongoProjectNight\MyMongoProjectNight\obj\Debug\net6.0\ref\MyMongoProjectNight.dll
+C:\Users\ismai\OneDrive\Masaüstü\my\MyMongoProjectNight\MyMongoProjectNight\obj\Debug\net6.0\MyMongoProjectNight.sourcelink.json
