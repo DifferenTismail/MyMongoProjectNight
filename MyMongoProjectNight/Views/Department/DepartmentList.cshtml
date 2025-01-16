@@ -1,0 +1,26 @@
+﻿@model List<MyMongoProjectNight.Dtos.DepartmentDtos.ResultDepartmentDto>
+@{
+    ViewData["Title"] = "DepartmentList";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container mb-2">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>#</td>
+            <td>Departman Adı</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DepartmentId</td>
+                <td>@item.DepartmentName</td>
+                <td><a class="btn btn-danger" href="/Department/DeleteDepartment/@item.DepartmentId">Sil</a></td>
+                <td><a class="btn btn-info" href="/Department/UpdateDepartment/@item.DepartmentId">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Department/CreateDepartment" class="btn btn-primary">Yeni Departman Girişi</a>
+</div>
