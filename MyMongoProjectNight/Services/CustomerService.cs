@@ -9,6 +9,7 @@ namespace MyMongoProjectNight.Services
     public class CustomerService : ICustomerService
     {
         private readonly IMongoCollection<Customer> _customerCollection;
+        private readonly IMongoCollection<Department> _departmentCollection;
         private readonly IMapper _mapper;
 
         public CustomerService(IMapper mapper, IDatabaseSettings _databaseSettings)
@@ -16,6 +17,7 @@ namespace MyMongoProjectNight.Services
             var client = new MongoClient(_databaseSettings.ConnectionString);
             var database = client.GetDatabase(_databaseSettings.DatabaseName);
             _customerCollection = database.GetCollection<Customer>(_databaseSettings.CustomerCollectionName);
+            _departmentCollection = database.GetCollection<Department>(_databaseSettings.DepartmentCollectionName);
             _mapper = mapper;
         }
 
@@ -40,6 +42,16 @@ namespace MyMongoProjectNight.Services
         {
             var values = await _customerCollection.Find(x =>x.CustomerId == customerId).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdCustomerDto>(values);
+        }
+
+        public async Task<List<ResultCustomerWithCategoryDto>> GetAllCustomerWithCategoryAsync()
+        {
+            var values = await _customerCollection.Find(x => true).ToListAsync();
+            foreach(var item in values)
+            {
+                item.Department = await _departmentCollection.Find(x => x.DepartmentId == item.DepartmentId).FirstAsync();
+            }
+            return _mapper.Map<List<ResultCustomerWithCategoryDto>>(values);
         }
 
         public async Task UpdateCustomerAsync(UpdateCustomerDto updateCustomerDto)
